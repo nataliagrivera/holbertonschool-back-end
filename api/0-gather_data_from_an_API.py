@@ -13,9 +13,10 @@ if __name__== "__main__":
     response = requests.get(url) # Get the response from the API for the user_id
     json_response = response.json() # Convert the response to JSON format
     tasks = []
-    for task in json_response:
-        if task.get("completed") is True:
-            tasks.append(task.get("title"))
-    print("Employee {} is done with tasks({}/{}):".format(name, len(tasks), 
-                                                          len(json_response)))
+    
+    completed = [task for task in tasks if task.get("completed") is True]
+    print("Employee {} is done with tasks({}/{}):".format(name, len(completed),
+                                                          len(tasks)))
+    for task in completed:
+        print("\t {}".format(task.get("title")))
     
