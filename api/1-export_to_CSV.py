@@ -15,6 +15,6 @@ if __name__ == "__main__":
     tasks = response.json()  # Get the tasks of the user
     with open("{}.csv".format(argv[1]), "w") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for task in tasks:
+        for task in tasks:  # Write the tasks in the CSV file
             writer.writerow([argv[1], name, task.get("completed"),
-                            task.get("title")])
+                            task.get("title")])  # Write the row
